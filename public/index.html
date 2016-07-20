@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+
+<!-- define angular app -->
+<html ng-app="reaccionApp">
+
+<head>
+    <title>Reaccion Binario</title>
+  <!-- BOOTSTRAP -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+ 
+ <!-- Angular -->
+    <script src="bower_components/firebase/firebase.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script>
+    // Initialize Firebase
+    var config = {
+        apiKey: "AIzaSyBhO6EQyobyKk2UyqQN85uq_hESx35jIJI",
+        authDomain: "reaccion-binario.firebaseapp.com",
+        databaseURL: "https://reaccion-binario.firebaseio.com",
+        storageBucket: "reaccion-binario.appspot.com",
+    };
+    firebase.initializeApp(config);
+    </script>
+    <script src="bower_components/angularfire/dist/angularfire.js"></script>
+    <script src="script.js"></script>
+
+
+    <style type="text/css">
+    body{
+        padding-top: 50px;
+    }
+
+/**** MODULE ****/
+.bgc-fff {
+    background-color: #fff!important;
+}
+.box-shad {
+    -webkit-box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+    box-shadow: 1px 1px 0 rgba(0,0,0,.2);
+}
+.brdr {
+    border: 1px solid #ededed;
+}
+
+/* Font changes */
+.fnt-smaller {
+    font-size: .9em;
+}
+.fnt-lighter {
+    color: #bbb;
+}
+
+/* Padding - Margins */
+.pad-10 {
+    padding: 10px!important;
+}
+.mrg-0 {
+    margin: 0!important;
+}
+.btm-mrg-10 {
+    margin-bottom: 10px!important;
+}
+.btm-mrg-20 {
+    margin-bottom: 20px!important;
+}
+
+/* Color  */
+.clr-535353 {
+    color: #535353;
+}
+
+
+
+
+/**** MEDIA QUERIES ****/
+@media only screen and (max-width: 991px) {
+    #property-listings .property-listing {
+        padding: 5px!important;
+    }
+    #property-listings .property-listing a {
+        margin: 0;
+    }
+    #property-listings .property-listing .media-body {
+        padding: 10px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    #property-listings .property-listing img {
+        max-width: 180px;
+    }
+}
+
+
+    </style>
+
+
+</head>
+
+<!-- define angular controller -->
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigationbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button> <a class="navbar-brand" href="#/">Reaccion Binario</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="navigationbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li>
+                    <form class="navbar-form navbar-left" role="search" action="/search/" method="GET" id="search" autocomplete="off">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Busca tu lugar" name="query" width="100px" />
+                            <select name="drop" class="form-control" width="20">
+                                <option value="1">Cultura</option>
+                                <option value="2">Bares</option>
+                                <option value="3">Tiendas Comerciales</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </form>
+                </li>
+                <li> <a href="#home">Inicio</a>
+
+                </li>
+                <li> <a href="#favorites">Favoritos</a>
+
+                </li>
+                <li> <a href="#maps">Mapa</a>
+
+                </li>
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+
+  <div id="main">
+    <!-- angular templating -->
+		<!-- this is where content will be injected -->
+    <div ng-view></div>
+  </div>
+
+</body>
+
+</html>
